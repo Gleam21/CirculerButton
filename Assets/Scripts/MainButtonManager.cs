@@ -9,7 +9,7 @@ public class MainButtonManager : MonoBehaviour
 {
     [SerializeField] Button SubButton;
 
-    public enum Handle {   HandleType1,HandleType2 };
+    [SerializeField] enum Handle {   HandleType1,HandleType2 };
      
 
 
@@ -24,7 +24,10 @@ public class MainButtonManager : MonoBehaviour
         
     }
 
-
+    public void OnClick()
+    {
+        Debug.Log("메인 버튼 눌려짐");
+    }
 
 
 
