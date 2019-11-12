@@ -9,46 +9,61 @@ public class ActionButtonManager : MonoBehaviour
 
     Vector2 strPos;
     Vector2 endPos;
-
+    //public bool check = true;
     public Image image;
 
     // Start is called before the first frame update
-    
+
 
 
 
     void Update()
     {
+
+        MouseTrail();
+
+
+    }
+    
+    public void MouseTrail()
+    {
+        //마우스 궤적 이미지 구현
         if (Input.GetMouseButtonDown(0))
         {
             image.gameObject.SetActive(true);
             strPos = Input.mousePosition;
             image.transform.position = strPos;
-          
+
         }
 
         if (Input.GetMouseButton(0))
         {
+            //check = false;
             Vector2 myPos = Input.mousePosition;
             image.transform.localScale = new Vector2(Vector2.Distance(myPos, strPos), 1);
-            image.transform.localRotation = Quaternion.Euler(0, 0,AngleInDeg(strPos, myPos));
-            StartCoroutine(DragLine());
+            image.transform.localRotation = Quaternion.Euler(0, 0, AngleInDeg(strPos, myPos));
+
+            //StartCoroutine(DragLine());
+
+            //strPos = Input.mousePosition;
+            //image.transform.position = strPos;
         }
 
         if (Input.GetMouseButtonUp(0))
         {
             image.gameObject.SetActive(false);
-       
+
         }
-    }
-
-    IEnumerator DragLine()
-    {
-        strPos = Input.mousePosition;
-        yield return new WaitForSeconds(0.3f);
-
 
     }
+
+    //IEnumerator DragLine()
+    //{  
+
+    //    yield return new WaitForSeconds(0.1f);
+    //    check = true;
+
+    //}
 
     public static float AngleInRad(Vector3 vec1, Vector3 vec2)
     {
