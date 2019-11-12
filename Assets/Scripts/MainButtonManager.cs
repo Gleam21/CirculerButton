@@ -2,19 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
-[RequireComponent(typeof(Handle))]
+using UnityEngine.EventSystems;
+//[RequireComponent(typeof(Handle))]
 
 public class MainButtonManager : MonoBehaviour
 {
     [SerializeField] Button SubButton;
+    [HideInInspector] public bool MainBtClicked;
 
-    [SerializeField] enum Handle {   HandleType1,HandleType2 };
+
+    //[SerializeField] enum Handle {   HandleType1,HandleType2 };
      
 
 
     void Start()
     {
+        MainBtClicked = false;
         
     }
 
@@ -24,11 +27,17 @@ public class MainButtonManager : MonoBehaviour
         
     }
 
+
+
+
     public void OnClick()
     {
-        Debug.Log("메인 버튼 눌려짐");
-    }
+         
+        MainBtClicked = true;
 
+        Debug.Log("드래그 시작"+MainBtClicked);
+
+    }
 
 
 }
