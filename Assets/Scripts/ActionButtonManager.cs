@@ -13,11 +13,10 @@ public class ActionButtonManager : MonoBehaviour
     public Image image;
 
     // Start is called before the first frame update
-    void Start()
-    {
-        
+    
 
-    }
+
+
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
@@ -32,9 +31,8 @@ public class ActionButtonManager : MonoBehaviour
         {
             Vector2 myPos = Input.mousePosition;
             image.transform.localScale = new Vector2(Vector2.Distance(myPos, strPos), 1);
-            image.transform.localRotation = Quaternion.Euler(0, 0,
-                AngleInDeg(strPos, myPos));
-           
+            image.transform.localRotation = Quaternion.Euler(0, 0,AngleInDeg(strPos, myPos));
+            StartCoroutine(DragLine());
         }
 
         if (Input.GetMouseButtonUp(0))
@@ -42,6 +40,14 @@ public class ActionButtonManager : MonoBehaviour
             image.gameObject.SetActive(false);
        
         }
+    }
+
+    IEnumerator DragLine()
+    {
+        strPos = Input.mousePosition;
+        yield return new WaitForSeconds(0.3f);
+
+
     }
 
     public static float AngleInRad(Vector3 vec1, Vector3 vec2)
