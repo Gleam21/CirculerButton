@@ -2,29 +2,69 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
+
+struct  SubButton {
+    int index;
+     
+
+}
+
+
+
+
 public class ActionButtonManager : MonoBehaviour
 {
-    [SerializeField] GameObject MainButtonPrefab;
+    [Header("SubButtons Object Pool")]
     [SerializeField] GameObject SubButtonPrefab;
+    public int maxPool = 4;
+    public List<GameObject> SubButtons = new List<GameObject>();
+
+
+    [SerializeField] GameObject MainButtonPrefab;
+    
 
     Vector2 strPos;
     Vector2 endPos;
-    //public bool check = true;
+
     public Image image;
 
-    // Start is called before the first frame update
+    [HideInInspector] public bool MainBtClicked;
 
 
+    private void Awake()
+    {
+        CreatePooling();
+    }
 
 
     void Update()
-    {
-
+    { 
         MouseTrail();
 
 
     }
-    
+
+
+
+    public void CreatePooling()
+    {
+        GameObject objectPools = new GameObject("SubButtons Object Pool");
+        for (int i = 0; i < maxPool; i++)
+        {
+            var obj = Instantiate<GameObject>(SubButtonPrefab, objectPools.transform);
+            obj.name = "SubButton" + i.ToString("00");
+            obj.SetActive(false);
+            SubButtons.Add(obj);
+        }
+
+
+    }
+
+
+
+
+
     public void MouseTrail()
     {
         //마우스 궤적 이미지 구현
@@ -56,15 +96,6 @@ public class ActionButtonManager : MonoBehaviour
         }
 
     }
-
-    //IEnumerator DragLine()
-    //{  
-
-    //    yield return new WaitForSeconds(0.1f);
-    //    check = true;
-
-    //}
-
     public static float AngleInRad(Vector3 vec1, Vector3 vec2)
     {
         return Mathf.Atan2(vec2.y - vec1.y, vec2.x - vec1.x);

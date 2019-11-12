@@ -6,17 +6,17 @@ using UnityEngine.EventSystems;
 //[RequireComponent(typeof(Handle))]
 
 public class MainButtonManager : MonoBehaviour
-{ 
-    [HideInInspector] public bool MainBtClicked;
+{
 
+
+
+    
 
     //[SerializeField] enum Handle {   HandleType1,HandleType2 };
-     
 
-
-    void Start()
+    void Awake()
     {
-        MainBtClicked = false;
+        GetComponentInParent<ActionButtonManager>().MainBtClicked = false;
         
     }
 
@@ -24,17 +24,14 @@ public class MainButtonManager : MonoBehaviour
     void Update()
     {
          
-    }
-
-
-
-
+    } 
 
     public void BeginDrag()
     {
-
+        GetComponentInParent<ActionButtonManager>().MainBtClicked = true;
 
         Debug.Log("메인 으로부터 드래그 시작");
+
 
     }
 
