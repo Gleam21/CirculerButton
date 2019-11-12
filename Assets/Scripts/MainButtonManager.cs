@@ -6,8 +6,7 @@ using UnityEngine.EventSystems;
 //[RequireComponent(typeof(Handle))]
 
 public class MainButtonManager : MonoBehaviour
-{
-    [SerializeField] Button SubButton;
+{ 
     [HideInInspector] public bool MainBtClicked;
 
 
@@ -24,20 +23,27 @@ public class MainButtonManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-    }
-
-
-
-
-    public void OnClick()
-    {
          
-        MainBtClicked = true;
+    }
 
-        Debug.Log("드래그 시작"+MainBtClicked);
+
+
+
+
+    public void BeginDrag()
+    {
+
+
+        Debug.Log("메인 으로부터 드래그 시작");
 
     }
 
+    public void EndDrag()
+    {
+
+
+        Debug.Log("메인 으로부터 드래그 종료");
+
+    }
 
 }
