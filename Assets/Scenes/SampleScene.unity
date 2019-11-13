@@ -369,7 +369,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SubButtonPrefab: {fileID: 6842456189202796251, guid: 1492f5e13a86eee4aac300ae219d9888,
     type: 3}
-  maxPool: 2
+  maxPool: 4
   SubObjList: []
   MainButtonColor: {r: 0.75, g: 1, b: 0, a: 1}
   SubButtonColor: {r: 0, g: 0, b: 0, a: 0}
