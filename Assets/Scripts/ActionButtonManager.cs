@@ -10,49 +10,116 @@ public class ActionButtonManager : MonoBehaviour
 
     [Header("SubButtons Object Pool")]
     [SerializeField] GameObject SubButtonPrefab;
-    public int maxPool = 4;
-    public List<GameObject> SubObjList = new List<GameObject>();
-    public List<subStructs> subStructs = new List<subStructs>();
+    public int maxPool;
 
+    public List<GameObject> SubObjList = new List<GameObject>();
+
+
+    subStructs? subs;
+
+
+    
 
     public Color MainButtonColor;
     public Color SubButtonColor;
 
-    [SerializeField] GameObject MainButtonPrefab;
- 
+    [SerializeField] GameObject MainButton;
+     
+
 
     Vector2 strPos;
     Vector2 endPos;
 
+    //Vector3 vector;
+    float r = 500.0f;
+    //float angle;
+    //Quaternion quaternion;
+    float x, y;
     public Image image;
 
     [HideInInspector] public bool MainBtClicked;
-
+   
 
     private void Awake()
-    {
+    { 
+         
+
+
+
         CreatePooling();
     }
 
 
     void Update()
     { 
+
         MouseTrail();
 
 
-    }
-
-
+    } 
 
     public void CreatePooling()
     {
-         
+
+        //float angle = 45*Mathf.Deg2Rad;
+        //float   Gap = 0 ;
+
+        //Gap = 90 / maxPool / 2 ;
+
+
         for (int i = 0; i < maxPool; i++)
         {
-            var obj = Instantiate<GameObject>(SubButtonPrefab,gameObject.transform); //GameObject.Find("MainButton").GetComponent<Transform>());
+            float angle = (Mathf.PI * 2 / maxPool) * (i + 1);
+
+
+
+            x = Mathf.Cos(angle) * r + MainButton.transform.position.x;
+            y = Mathf.Sin(angle) * r + MainButton.transform.position.y;
+
+            
+            Debug.Log("Angle: " + (angle * Mathf.Rad2Deg));
+            var obj = Instantiate<GameObject>(SubButtonPrefab, transform);
+
+            
+            obj.transform.position = new Vector3(x, y, 0);
+            
             obj.name = "SubButton" + i.ToString("0");
+
+
+
+            switch (i)
+            {
+                case 1: obj.GetComponent<Image>().color = Color.blue;
+                    break;
+                case 2:
+                    obj.GetComponent<Image>().color = Color.red;
+                    break;
+                case 3:
+                    obj.GetComponent<Image>().color = Color.yellow;
+                    break;
+                case 4:
+                    obj.GetComponent<Image>().color = Color.green;
+                    break;
+                case 5:
+                    obj.GetComponent<Image>().color = Color.cyan;
+                    break;
+
+            }
+
+            //if (i % 2 == 0)
+            //{
+            //    anglePlus =anglePlus* Gap  ;
+            //    angle += anglePlus;
+            //}
+            //else
+            //{
+            //    angleMinus = angleMinus*Gap ;
+            //    angle -= angleMinus;
+            //}
+
             obj.SetActive(false);
             SubObjList.Add(obj);
+             
         }
 
 

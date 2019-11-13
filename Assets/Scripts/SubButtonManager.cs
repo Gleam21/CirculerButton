@@ -21,6 +21,8 @@ public class SubButtonManager : MonoBehaviour
 
     private void Start()
     { 
+
+
     }
 
     public void OnClick()

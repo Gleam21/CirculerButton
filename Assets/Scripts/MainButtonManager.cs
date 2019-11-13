@@ -17,8 +17,7 @@ public class MainButtonManager : MonoBehaviour
     void Awake()
     {
         GetComponentInParent<ActionButtonManager>().MainBtClicked = false;
-
-        Debug.Log( GetComponentInParent<ActionButtonManager>().MainButtonColor);
+         
 
     }
 
@@ -35,8 +34,7 @@ public class MainButtonManager : MonoBehaviour
         gameObject.GetComponent<Image>().color = GetComponentInParent<ActionButtonManager>().MainButtonColor;
         subBool = true;
         setSubsActive();
-
-        Debug.Log("메인 으로부터 드래그 시작");
+ 
          
     }
 
@@ -46,7 +44,7 @@ public class MainButtonManager : MonoBehaviour
         subBool = false;
         setSubsActive();
         gameObject.GetComponent<Image>().color = Color.white;
-        Debug.Log("메인 으로부터 드래그 종료");
+      
 
     }
 
