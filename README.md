@@ -4,6 +4,6 @@
 
 메인 버튼을 드래그 하면 서브 버튼이 생성 됩니다.
 
-<img src="/path/to/CirculerButton.jpg"   ></img><br/>
+<img src="C:\Users\tj-bu\Projects\GitHubReposi\CirculerButton/CirculerButton.jpg"   ></img><br/>
 
 서브 버튼 생성 개수를 조절 하면 버튼 생성 위치가 변경됩니다
