@@ -17,7 +17,9 @@ public class MainButtonManager : MonoBehaviour
     void Awake()
     {
         GetComponentInParent<ActionButtonManager>().MainBtClicked = false;
-        
+
+        Debug.Log( GetComponentInParent<ActionButtonManager>().MainButtonColor);
+
     }
 
     // Update is called once per frame
@@ -29,12 +31,12 @@ public class MainButtonManager : MonoBehaviour
     public void BeginDrag()
     {
         GetComponentInParent<ActionButtonManager>().MainBtClicked = true;
+        gameObject.GetComponent<Image>().color = GetComponentInParent<ActionButtonManager>().MainButtonColor;
         subBool = true;
         setSubsActive();
 
         Debug.Log("메인 으로부터 드래그 시작");
-
-
+         
     }
 
     public void EndDrag()
@@ -42,6 +44,7 @@ public class MainButtonManager : MonoBehaviour
 
         subBool = false;
         setSubsActive();
+        gameObject.GetComponent<Image>().color = Color.white;
         Debug.Log("메인 으로부터 드래그 종료");
 
     }

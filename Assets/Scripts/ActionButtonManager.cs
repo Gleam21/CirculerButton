@@ -3,26 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
-
-struct  SubButton {
-    int index;
-     
-
-}
-
-
-
+ 
 
 public class ActionButtonManager : MonoBehaviour
 {
+
     [Header("SubButtons Object Pool")]
     [SerializeField] GameObject SubButtonPrefab;
     public int maxPool = 4;
     public List<GameObject> SubButtons = new List<GameObject>();
 
+    public Color MainButtonColor;
+    public Color SubButtonColor;
 
     [SerializeField] GameObject MainButtonPrefab;
-    
+    [SerializeField] GameObject MainButton;
 
     Vector2 strPos;
     Vector2 endPos;
@@ -49,11 +44,11 @@ public class ActionButtonManager : MonoBehaviour
 
     public void CreatePooling()
     {
-        GameObject objectPools = new GameObject("SubButtons Object Pool");
+         
         for (int i = 0; i < maxPool; i++)
         {
-            var obj = Instantiate<GameObject>(SubButtonPrefab, GameObject.Find("MainButton").GetComponent<Transform>());
-            obj.name = "SubButton" + i.ToString("00");
+            var obj = Instantiate<GameObject>(SubButtonPrefab,gameObject.transform); //GameObject.Find("MainButton").GetComponent<Transform>());
+            obj.name = "SubButton" + i.ToString("0");
             obj.SetActive(false);
             SubButtons.Add(obj);
         }
