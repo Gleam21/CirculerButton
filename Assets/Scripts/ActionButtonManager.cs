@@ -52,7 +52,7 @@ public class ActionButtonManager : MonoBehaviour
         GameObject objectPools = new GameObject("SubButtons Object Pool");
         for (int i = 0; i < maxPool; i++)
         {
-            var obj = Instantiate<GameObject>(SubButtonPrefab, objectPools.transform);
+            var obj = Instantiate<GameObject>(SubButtonPrefab, GameObject.Find("MainButton").GetComponent<Transform>());
             obj.name = "SubButton" + i.ToString("00");
             obj.SetActive(false);
             SubButtons.Add(obj);
