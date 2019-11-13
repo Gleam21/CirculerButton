@@ -2,11 +2,31 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
- 
-public class SubButtonManager : MonoBehaviour
-{ 
+using UnityEngine.UI;
 
-     
+public interface ISubButton
+{
+    void DidSelectCell(SubButtonManager subButton); 
+}
+
+
+
+public class SubButtonManager : MonoBehaviour
+{
+
+
+    public ISubButton subButtonDelegate;
+    [SerializeField] Button subButton;
+ 
+
+    private void Start()
+    { 
+    }
+
+    public void OnClick()
+    {
+        subButtonDelegate.DidSelectCell(this);
+    }
 
     public void Selected()
     { 

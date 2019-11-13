@@ -31,6 +31,7 @@ public class MainButtonManager : MonoBehaviour
     public void BeginDrag()
     {
         GetComponentInParent<ActionButtonManager>().MainBtClicked = true;
+
         gameObject.GetComponent<Image>().color = GetComponentInParent<ActionButtonManager>().MainButtonColor;
         subBool = true;
         setSubsActive();
@@ -51,7 +52,7 @@ public class MainButtonManager : MonoBehaviour
 
     void setSubsActive()
     {
-        var obj = GetComponentInParent<ActionButtonManager>().SubButtons;
+        var obj = GetComponentInParent<ActionButtonManager>().SubObjList;
         int i = 0;
         
         foreach (var gameObject in obj)

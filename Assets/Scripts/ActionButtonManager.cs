@@ -11,13 +11,15 @@ public class ActionButtonManager : MonoBehaviour
     [Header("SubButtons Object Pool")]
     [SerializeField] GameObject SubButtonPrefab;
     public int maxPool = 4;
-    public List<GameObject> SubButtons = new List<GameObject>();
+    public List<GameObject> SubObjList = new List<GameObject>();
+    public List<subStructs> subStructs = new List<subStructs>();
+
 
     public Color MainButtonColor;
     public Color SubButtonColor;
 
     [SerializeField] GameObject MainButtonPrefab;
-    [SerializeField] GameObject MainButton;
+ 
 
     Vector2 strPos;
     Vector2 endPos;
@@ -50,7 +52,7 @@ public class ActionButtonManager : MonoBehaviour
             var obj = Instantiate<GameObject>(SubButtonPrefab,gameObject.transform); //GameObject.Find("MainButton").GetComponent<Transform>());
             obj.name = "SubButton" + i.ToString("0");
             obj.SetActive(false);
-            SubButtons.Add(obj);
+            SubObjList.Add(obj);
         }
 
 
