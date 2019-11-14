@@ -4,6 +4,6 @@
 
 메인 버튼을 드래그 하면 서브 버튼이 생성 됩니다.
 
-<img src=" /CirculerButton.jpg" width="450px" height="300px"   ></img><br/>
+<img src=" /CirculerButton.gif" width="450px" height="300px"   ></img><br/>
 
 서브 버튼 생성 개수를 조절 하면 버튼 생성 위치가 변경됩니다
